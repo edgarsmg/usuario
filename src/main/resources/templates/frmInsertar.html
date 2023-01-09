@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	
+	<div class="container">
+	
+	<div class="card bg-light">
+
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+
+		<div class="card-body">
+			
+				<form th:object="${usuario}" th:action="@{/guardar}"  th:method="${method}" enctype="multipart/form-data">
+					
+					<div class="form-group row">
+					
+						<input type="hidden" th:field="*{id}">
+						<label class="col-md-2" for="nombre">Nombre(s):</label> <input
+							type="text" th:field="*{nombre}"  class="form-control form-control-sm col-md-6"
+							id="nombre" placeholder="Nombre(s) del usuario"> 
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}"
+								th:errors="*{nombre}">
+							</small>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-md-2" for="imagen">Imagen:</label> 
+						<input type="file" name="file"
+							class="form-control form-control-sm col-md-6"
+							id="imagen">
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="apellidoPaterno">Apellido
+							Paterno:</label> <input type="text" th:field="*{apellidoPaterno}"
+							class="form-control form-control-sm col-md-6"
+							id="apellidoPaterno" placeholder="Apellido Paterno">
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('apellidoPaterno')}"
+								th:errors="*{apellidoPaterno}">
+							</small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="apellidoMaterno">Apellido
+							Materno:</label> <input type="text" th:field="*{apellidoMaterno}"
+							class="form-control form-control-sm col-md-6"
+							id="apellidoMaterno" placeholder="Apellido Materno">
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('apellidoMaterno')}"
+								th:errors="*{apellidoMaterno}">
+							</small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="telefono">Teléfono </label> <input
+							type="text" th:field="*{telefono}" class="form-control form-control-sm col-md-6"
+							id="telefono" placeholder="telefono">
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}"
+								th:errors="*{telefono}">
+							</small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="email">Correo</label> <input
+							type="text"  th:field="*{email}" class="form-control form-control-sm col-md-6"
+							id="email" placeholder="email">
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+								th:errors="*{email}">
+							</small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="sueldo">Sueldo</label> <input
+							type="text" th:field="*{sueldo}" class="form-control form-control-sm col-md-6"
+							id="sueldo" placeholder="$">
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('sueldo')}"
+								th:errors="*{sueldo}">
+							</small>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2" for="descripcion">Descripción</label>
+						<textarea class="form-control form-control-sm col-md-6" th:field="*{descripcion}"
+							id="descripcion" rows="3"></textarea>
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}">
+							</small>
+					</div>
+					
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-primary btn-sm" value="Guardar"/>
+					</div>
+
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
